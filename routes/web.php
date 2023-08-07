@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::post('/inertia', [InertiaTestController::class, 'store'])->name('inertia.
 Route::get('/inertia/show/{id}',[InertiaTestController::class, 'show'])->name('inertia.show');
 Route::delete('/inertia/{id}',[InertiaTestController::class, 'delete'])->name('inertia.delete');
 Route::resource('items', ItemController::class)->middleware(['auth', 'verified']);
+Route::resource('/customers', CustomerController::class)->middleware(['auth', 'verified']);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
