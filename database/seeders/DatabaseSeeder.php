@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\ItemSeeder;
 use App\Models\Customer;
+use App\Models\Purchase;
+use App\Models\Item;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +25,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Customer::factory(1000)->create();
+        $items = Item::all();
+        Purchase::factory(100)->create()
+        ->each(function(Purchase $purchase) use($items) {
+            $purchase->items()->attach(
+                $items->random(rand(1,3))->pluck('id')->toArray(),
+                ['quantity' => rand(1, 5) ] 
+            );
+        });
     }
 }

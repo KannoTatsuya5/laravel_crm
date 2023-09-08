@@ -1,18 +1,18 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head,Link } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import FlashMessage from "@/Components/FlashMessage.vue";
 import Pagination from "@/Components/Pagination.vue";
 import { ref } from 'vue'
 import { Inertia } from '@inertiajs/inertia';
 
 defineProps({
-    customers:Object
+    customers: Object
 })
 
 const search = ref('')
 const searchCustomers = () => {
-Inertia.get(route('customers.index', { search: search.value }))
+    Inertia.get(route('customers.index', { search: search.value }))
 }
 </script>
 
@@ -31,42 +31,34 @@ Inertia.get(route('customers.index', { search: search.value }))
                         <section class="text-gray-600 body-font">
                             <div class="container px-5 py-8 mx-auto">
                                 <FlashMessage />
-                                <div
-                                    class="flex pl-4 my-4 lg:w-2/3 w-full mx-auto"
-                                >
-                                <div>
-                                    <input type="text" name="search" v-model="search">
-                                    <button class="bg-blue-300 text-white py-2 px-2"
-                                    @click="searchCustomers">検索</button>
+                                <div class="flex pl-4 my-4 lg:w-2/3 w-full mx-auto">
+                                    <div>
+                                        <input type="text" name="search" v-model="search">
+                                        <button class="bg-blue-300 text-white py-2 px-2"
+                                            @click="searchCustomers">検索</button>
+                                    </div>
+                                    <Link
+                                        class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                                        as="button" :href="route('customers.create')">顧客登録</Link>
                                 </div>
-                                <Link class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" as="button" :href="route('customers.create')">顧客登録</Link>
-                                </div>
-                                <div
-                                    class="lg:w-2/3 w-full mx-auto overflow-auto"
-                                >
-                                    <table
-                                        class="table-auto w-full text-left whitespace-no-wrap"
-                                    >
+                                <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+                                    <table class="table-auto w-full text-left whitespace-no-wrap">
                                         <thead>
                                             <tr>
                                                 <th
-                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"
-                                                >
+                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
                                                     ID
                                                 </th>
                                                 <th
-                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-                                                >
+                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                                     氏名
                                                 </th>
                                                 <th
-                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-                                                >
+                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                                     カナ
                                                 </th>
                                                 <th
-                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-                                                >
+                                                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                                     電話番号
                                                 </th>
                                             </tr>
@@ -79,11 +71,9 @@ Inertia.get(route('customers.index', { search: search.value }))
                                                 <td class="border-b-2 border-gray-200 px-4 py-3">
                                                     {{ customer.name }}
                                                 </td>
-                                                <td class="border-b-2 border-gray-200 px-4 py-3">{{customer.kana}}</td>
-                                                <td
-                                                    class="border-b-2 border-gray-200 px-4 py-3 text-lg text-gray-900"
-                                                >
-                                                    {{ customer.tel  }}
+                                                <td class="border-b-2 border-gray-200 px-4 py-3">{{ customer.kana }}</td>
+                                                <td class="border-b-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
+                                                    {{ customer.tel }}
                                                 </td>
                                             </tr>
                                         </tbody>

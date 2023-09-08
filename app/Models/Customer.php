@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Purchase;
 
 class Customer extends Model
 {
@@ -14,9 +15,9 @@ class Customer extends Model
         'tel',
         'email',
         'postcode',
-        'address', 
+        'address',
         'birthday',
-        'gender', 
+        'gender',
         'memo'
     ];
 
@@ -28,5 +29,10 @@ class Customer extends Model
                     ->orWhere('tel', 'like', $input . '%');
             }
         }
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
     }
 }
