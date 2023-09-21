@@ -18,8 +18,8 @@ const form = reactive({
     is_selling: props.item.is_selling,
 });
 
-const updateItem = id => {
-    Inertia.put(route('items.update', {item:id}), form);
+const updateItem = (id) => {
+    Inertia.put(route("items.update", { item: id }), form);
 };
 </script>
 
@@ -44,97 +44,44 @@ const updateItem = id => {
                                         <div class="flex flex-wrap -m-2">
                                             <div class="p-2 w-full">
                                                 <div class="relative">
-                                                    <label
-                                                        for="name"
-                                                        class="leading-7 text-sm text-gray-600"
-                                                        >商品名</label
-                                                    >
-                                                    <InputError
-                                                        :message="errors.name"
-                                                    ></InputError>
-                                                    <input
-                                                        type="text"
-                                                        id="name"
-                                                        name="name"
-                                                        v-model="form.name"
-                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                    />
+                                                    <label for="name" class="leading-7 text-sm text-gray-600">商品名</label>
+                                                    <InputError :message="errors.name"></InputError>
+                                                    <input type="text" id="name" name="name" v-model="form.name"
+                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             <div class="p-2 w-full">
                                                 <div class="relative">
-                                                    <label
-                                                        for="memo"
-                                                        class="leading-7 text-sm text-gray-600"
-                                                        >メモ</label
-                                                    >
-                                                    <InputError
-                                                        :message="errors.memo"
-                                                    ></InputError>
-                                                    <textarea
-                                                        id="memo"
-                                                        name="memo"
-                                                        v-model="form.memo"
-                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                                    ></textarea>
+                                                    <label for="memo" class="leading-7 text-sm text-gray-600">メモ</label>
+                                                    <InputError :message="errors.memo"></InputError>
+                                                    <textarea id="memo" name="memo" v-model="form.memo"
+                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                                 </div>
                                             </div>
                                             <div class="p-2 w-full">
                                                 <div class="relative">
-                                                    <label
-                                                        for="price"
-                                                        class="leading-7 text-sm text-gray-600"
-                                                        >商品価格</label
-                                                    >
-                                                    <InputError
-                                                        :message="errors.price"
-                                                    ></InputError>
-                                                    <input
-                                                        type="number"
-                                                        id="price"
-                                                        name="price"
-                                                        v-model="form.price"
-                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                    />
+                                                    <label for="price" class="leading-7 text-sm text-gray-600">商品価格</label>
+                                                    <InputError :message="errors.price"></InputError>
+                                                    <input type="number" id="price" name="price" v-model="form.price"
+                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <p>ステータス</p>
-                                                    <input
-                                                        type="radio"
-                                                        id="is_selling"
-                                                        name="is_selling"
-                                                        v-model="
-                                                            form.is_selling
-                                                        "
-                                                        value="1"
-                                                    />
-                                                    <label
-                                                        for="is_selling"
-                                                        class="leading-7 text-sm text-gray-600"
-                                                        >販売中</label
-                                                    >
-                                                    <input
-                                                        type="radio"
-                                                        id="is_notselling"
-                                                        name="is_selling"
-                                                        v-model="
-                                                            form.is_selling
-                                                        "
-                                                        value="0"
-                                                    />
-                                                    <label
-                                                        for="is_notselling"
-                                                        class="leading-7 text-sm text-gray-600"
-                                                        >停止中</label
-                                                    >
+                                                    <input type="radio" id="is_selling" name="is_selling" v-model="form.is_selling
+                                                        " value="1" />
+                                                    <label for="is_selling"
+                                                        class="leading-7 text-sm text-gray-600">販売中</label>
+                                                    <input type="radio" id="is_notselling" name="is_selling" v-model="form.is_selling
+                                                        " value="0" />
+                                                    <label for="is_notselling"
+                                                        class="leading-7 text-sm text-gray-600">停止中</label>
                                                 </div>
                                             </div>
                                             <div class="p-2 w-full">
                                                 <button
-                                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                                                >
+                                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                                                     更新する
                                                 </button>
                                             </div>
